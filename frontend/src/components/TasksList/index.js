@@ -3,7 +3,28 @@ import './tasks.css'
 import Task from "./Task"
 import {MdAddCircle} from "react-icons/all";
 import AddTask from './AddTask';
-const TaskList = (props) => {
+import taskAPI from '../../services/tasks'
+
+const TaskList = () => {
+
+    useEffect(()=>{
+        taskAPI.getAllTasks()
+        .then(task=>{
+        console.log(task)
+        updateTaskList(task.data)
+        })
+    },[])
+
+    const [taskList, updateTaskList] = useState([])
+    const addTask = (title, description, category)=>{
+        taskAPI.addTask({title, description, category})
+        .then(res=>{      
+        updateTaskList([res.data, ...taskList])
+        })
+        .catch(err=>{
+        console.log(err)
+        })
+  }
     const [showAddTask, updateShowAddTask] = useState(false)
     const updateTaskStatus = () => {
 
@@ -13,7 +34,7 @@ const TaskList = (props) => {
     }
 
     const saveTaskValues = (title, description, category) =>  {
-        props.addTask(title, description, category)
+        addTask(title, description, category)
         updateShowAddTask(false)
     }
     const renderModal = ()=>{
@@ -42,7 +63,7 @@ const TaskList = (props) => {
                     </div>
                     <div className="tasks-list">
                     {
-                        props.tasks.map(task=>{
+                        taskList.map(task=>{
                             return (
                                 <Task 
                                     task={task}
