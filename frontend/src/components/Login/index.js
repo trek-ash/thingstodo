@@ -21,7 +21,8 @@ const Login = (props) => {
       }
     return(
         <React.Fragment>
-            <h2 className="my-4">Just choose a username and password to start!</h2>
+            <h2 className="my-4">Just choose a username and password to start</h2>
+            <p>If you already registered, you are good to go with your secrets!</p>
             <div className="login p-3 mt-5">
                 
                 <FormGroup>
