@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+app.use("/api/v1/task", require("./routes/task"))
 
 app.use(express.static(path.join(__dirname, "frontend", "build")))
 
