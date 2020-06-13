@@ -1,15 +1,15 @@
-# thingstodo
+# Thingie
 
 Now you can take the things you need to do, in a simple and categorised way.
 
 #   Features
 
-Login/Register
-Add tasks
-Mark tasks as done/undone
+Login/Register <br>
+Add tasks <br>
+Mark tasks as done/undone<br>
 
 #   Tech stack
 
-Frontend: ReactJs
-Backend: NodeJs, ExpressJs, Sequelize
-Databse: Mysql
+Frontend: ReactJs<br>
+Backend: NodeJs, ExpressJs, Sequelize<br>
+Databse: Mysql<br>
