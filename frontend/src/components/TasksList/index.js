@@ -15,7 +15,6 @@ const TaskList = () => {
         else
             taskAPI.getAllTasks(username)
             .then(task=>{
-            console.log(task)
             updateTaskList(task.data)
             })
     },[])
@@ -67,6 +66,7 @@ const TaskList = () => {
     return(
         <Fragment>
             <div className="float-right ">
+                <span className="username-span">{sessionStorage.getItem("uid")}</span>
                 <FiLogOut className="logout-btn" onClick={logout}/>
             </div>
             <div className="task-list-wrapper">
@@ -77,9 +77,7 @@ const TaskList = () => {
                     handleClose={toggleShowAddTask}
                     saveTask={saveTaskValues}
                 />
-                
-                
-                    <div className="header p-3">
+                <div className="header p-3">
                         
                         <div className="add-task-btn">
                             <MdAddCircle className="cursor-pointer" onClick={toggleShowAddTask}/>
@@ -91,6 +89,7 @@ const TaskList = () => {
                         taskList.map(task=>{
                             return (
                                 <Task 
+                                    key={task.id}
                                     task={task}
                                     updateStatus={updateTaskStatus}
                                 />

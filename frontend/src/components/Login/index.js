@@ -10,7 +10,6 @@ const Login = (props) => {
     const saveUser = () =>  {
         userAPI.addUser({username, password})
         .then(res=>{
-          console.log(res)
           if(res.status==200)   {
             sessionStorage.setItem("uid", res.data[0].username)
             history.push("/tasks")

@@ -45,3 +45,19 @@
     top: -50px;
     color: #3F51B5;
 }
+
+.logout-btn{
+    font-size: 40px;
+    margin-right: 20px;
+    margin-top: 20px;
+    color: red;
+    cursor: pointer;
+}
+.username-span{   
+    font-size: 20px;
+    top: 10px;
+    right: 5px;
+    position: relative;
+    color: #009688;
+    font-weight: 500;
+}
