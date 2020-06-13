@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import TaskList  from './TasksList';
+import TaskList  from './components/TasksList';
 import taskAPI from './services/tasks'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Login from "./components/Login"
 function App() {
   useEffect(()=>{
     taskAPI.getAllTasks()
@@ -29,10 +34,20 @@ function App() {
       <header className="App-header">
         Things To Do!
       </header>
-      <TaskList 
-          addTask={addTask}
-          tasks={taskList}
-        />
+      <Router>
+        <Switch>
+          <Route path="/tasks">
+            <TaskList 
+            
+              addTask={addTask}
+              tasks={taskList}
+            />
+          </Route>
+          <Route path="/">
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
