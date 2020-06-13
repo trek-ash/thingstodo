@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Task from the database.
 exports.findAll = (req, res) => {
-  Task.findAll()
+  Task.findAll({order: [['createdAt', "DESC"]]})
     .then(data=>{
       res.send(data)
     })

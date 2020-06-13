@@ -40,8 +40,8 @@
 }
 .add-task-btn{
     position: absolute;
-    right: -25px;
+    right: -35px;
     font-size: 64px;
-    top: -29px;
-    color: #3F51B5;;
+    top: -50px;
+    color: #3F51B5;
 }
