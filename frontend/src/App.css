@@ -26,6 +26,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  box-shadow: 2px 5px 14px #000
 }
 
 .App-link {
@@ -42,7 +43,7 @@
 }
 
 .login{
-  width: 50%;
+  width: 40%;
   margin: auto;
   background-color: #5C6BC0;
   text-align: left;
