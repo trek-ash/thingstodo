@@ -35,8 +35,19 @@ const TaskList = () => {
         sessionStorage.removeItem("uid")
         history.push("/")
     }
-    const updateTaskStatus = () => {
-        
+    const updateTaskStatus = (task, new_status) => {
+        taskAPI.updateTaskStatus({...task, done: new_status})
+        .then(res=>{
+            const updatedTaskList = taskList.map(task=>{
+                if(task.id==res.data.task.id)
+                    return res.data.task
+                return task
+            })
+            updateTaskList(updatedTaskList)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     }
     const toggleShowAddTask = () => {
         updateShowAddTask(!showAddTask)

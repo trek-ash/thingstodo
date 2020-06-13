@@ -3,7 +3,7 @@ import "../tasks.css"
 import {FaRegCircle, FaRegCheckCircle} from "react-icons/all"
 const Task = (props) => {
     const toggleTaskStatus = ()=>{
-        // props.task.done
+        props.updateStatus(props.task, !props.task.done)
     }
     return(
         <div className={props.task.done?"task done-task":"task"}>

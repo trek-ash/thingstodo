@@ -3,6 +3,6 @@ const tasks = require("../controllers/tasks")
 
 router.post("/", tasks.create)
 router.get("/:username/all", tasks.findAll)
-router.patch("/:id", tasks.update)
+router.post("/update", tasks.update)
 
 module.exports = router
