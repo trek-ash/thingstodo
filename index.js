@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.use("/api/v1/task", require("./routes/task"))
-
+app.use("/api/v1/user", require("./routes/user"))
 app.use(express.static(path.join(__dirname, "frontend", "build")))
 
 app.use("*", (req, res) => {

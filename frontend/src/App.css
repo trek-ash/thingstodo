@@ -40,3 +40,11 @@
     transform: rotate(360deg);
   }
 }
+
+.login{
+  width: 50%;
+  margin: auto;
+  background-color: #5C6BC0;
+  text-align: left;
+  color: #fff;
+}
