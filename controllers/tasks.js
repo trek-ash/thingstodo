@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Task
 exports.create = (req, res) => {
 
-  const {title, description,category} = req.body
+  const {title, description,category, username} = req.body
   // Validate request
   if (!title) {
     res.status(400).send({
@@ -17,7 +17,8 @@ exports.create = (req, res) => {
   const task = {
     title,
     description,
-    category
+    category,
+    username
   };
 
   // Save Task in the database
@@ -35,7 +36,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Task from the database.
 exports.findAll = (req, res) => {
-  Task.findAll({order: [['createdAt', "DESC"]]})
+  Task.findAll({where: {username: req.params.username},order: [['createdAt', "DESC"]]})
     .then(data=>{
       res.send(data)
     })

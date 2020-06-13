@@ -1,14 +1,20 @@
 import React, {useState} from "react";
 import {InputGroup, FormGroup, Form, Button,  Modal, ModalHeader, ModalBody, ModalFooter} from 'react-bootstrap';
 import userAPI from "../../services/users"
+import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
     const [username, updateUsername] = useState("")
     const [password, updatePassword] = useState("")
+    const history = useHistory();
     const saveUser = () =>  {
         userAPI.addUser({username, password})
         .then(res=>{
           console.log(res)
+          if(res.status==200)   {
+            sessionStorage.setItem("uid", res.data[0].username)
+            history.push("/tasks")
+          }
         })
         .catch(err=>{
           console.log(err)

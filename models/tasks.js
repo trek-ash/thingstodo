@@ -14,6 +14,10 @@ module.exports = (sequelize, Sequelize) => {
       category:{
         type: Sequelize.STRING
       },
+      username:{
+        type: Sequelize.STRING,
+        required: true
+      },
       done: {
         type: Sequelize.BOOLEAN,
         defaultValue: false

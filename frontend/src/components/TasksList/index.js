@@ -4,20 +4,25 @@ import Task from "./Task"
 import {MdAddCircle} from "react-icons/all";
 import AddTask from './AddTask';
 import taskAPI from '../../services/tasks'
-
+import {FiLogOut} from "react-icons/all"
+import {useHistory} from "react-router-dom"
 const TaskList = () => {
-
+    const history= useHistory()
+    const username = sessionStorage.getItem("uid")
     useEffect(()=>{
-        taskAPI.getAllTasks()
-        .then(task=>{
-        console.log(task)
-        updateTaskList(task.data)
-        })
+        if(!username)
+            history.push("/")
+        else
+            taskAPI.getAllTasks(username)
+            .then(task=>{
+            console.log(task)
+            updateTaskList(task.data)
+            })
     },[])
 
     const [taskList, updateTaskList] = useState([])
     const addTask = (title, description, category)=>{
-        taskAPI.addTask({title, description, category})
+        taskAPI.addTask({title, description, category, username})
         .then(res=>{      
         updateTaskList([res.data, ...taskList])
         })
@@ -26,8 +31,12 @@ const TaskList = () => {
         })
   }
     const [showAddTask, updateShowAddTask] = useState(false)
+    const logout = () => {
+        sessionStorage.removeItem("uid")
+        history.push("/")
+    }
     const updateTaskStatus = () => {
-
+        
     }
     const toggleShowAddTask = () => {
         updateShowAddTask(!showAddTask)
@@ -46,14 +55,19 @@ const TaskList = () => {
     }
     return(
         <Fragment>
+            <div className="float-right ">
+                <FiLogOut className="logout-btn" onClick={logout}/>
+            </div>
             <div className="task-list-wrapper">
                 <div>
                     {renderModal()}
                     <AddTask 
-            show={showAddTask}
-            handleClose={toggleShowAddTask}
-            saveTask={saveTaskValues}
-        />
+                    show={showAddTask}
+                    handleClose={toggleShowAddTask}
+                    saveTask={saveTaskValues}
+                />
+                
+                
                     <div className="header p-3">
                         
                         <div className="add-task-btn">
