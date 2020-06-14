@@ -21,10 +21,14 @@ const Task = (props) => {
                     />
                 }
             </div>
-
+            
             <div className="task-title" >
                 {props.task.title}
-            </div>  
+                 
+            <div className="float-right category-icon" style={{background: props.color}}>
+
+            </div>
+            </div> 
         </div>
     )
 }
