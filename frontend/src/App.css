@@ -49,3 +49,19 @@
   text-align: left;
   color: #fff;
 }
+
+.category-wrapper{
+  overflow: auto;
+  height: 50px;
+  padding-top: 10px;
+  flex-flow: nowrap;
+  display: flex;
+}
+
+.category-badge{
+  padding: 5px 10px 7px 10px;
+  color: #fff;
+  border-radius: 15px;
+  white-space: nowrap;
+  cursor: pointer;
+}
