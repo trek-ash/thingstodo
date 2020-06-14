@@ -4,7 +4,7 @@
     width: 40%;
     border-radius: 5px;
     box-shadow: 2px 2px 12px #ccc;
-    max-height: 60vh;
+    max-height: 80vh;
     text-align: left;
     position: relative;
 }
@@ -24,11 +24,28 @@
 .tasks-list .task{
     margin: 20px;
     width: 85%;
+    position: relative;
 }
-
+.task-status{
+    position: absolute;
+    right: 40px;
+    z-index: 200;
+}
 .status-icon {
     float: right;
     cursor: pointer;
+}
+.task-title{
+
+    position: relative;
+}
+.category-icon{
+    position: absolute;
+    height: 10px;
+     width: 10px;
+     border-radius: 50%;
+     left: -15px;
+     top: 7px;
 }
 
 .green  {
