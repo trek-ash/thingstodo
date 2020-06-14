@@ -27,7 +27,8 @@ const TaskList = () => {
     },[])
 
     useEffect(()=>{
-        let categories = taskList.map(task=>task.category)
+        let categories = [...new Set(taskList.map(task=>task.category))]
+
         updateCategories(categories)
 
     }, [taskList])
@@ -45,6 +46,8 @@ const TaskList = () => {
         taskAPI.addTask({title, description, category, username})
         .then(res=>{      
             updateTaskList([res.data, ...taskList])
+            updateFilteredTask([res.data, ...taskList])
+            updateFilterCategory([])
         })
         .catch(err=>{
         console.log(err)
